@@ -10,6 +10,13 @@ document.getElementById("cadastroForm").addEventListener("submit", function(e) {
     mensagem.textContent = "";
     mensagem.className = "";
 
+    // Comparação de Strings
+    if (nome === "Admin") {
+        mensagem.textContent = "Erro: o nome 'Admin' não pode ser usado."
+        mensagem.className = "erro";
+        return;
+    }
+
     // Validações
     if (nome === "" || senha === "" || confirmarSenha === "" || isNaN(idade)) {
         mensagem.textContent = "Erro: Todos os campos são obrigatórios!";
@@ -35,15 +42,15 @@ document.getElementById("cadastroForm").addEventListener("submit", function(e) {
         return;
     }
 
-    // Classificação da Idade
-    let classificacao = "";
-    if (idade >= 18) {
-        classificacao = "Você é maior de idade.";
-    } else if (idade >= 13) {
-        classificacao = "Você é adolescente.";
-    } else {
-        classificacao = "Você é criança.";
-    }
+    // Uso de Booleano
+    let maiorDeIdade = idade >= 18;
+
+    // Operador Ternário Para Classificação da Idade
+    let classificacao = maiorDeIdade
+    ? "Você é maior de idade."
+    : idade >= 13 
+    ? "Você é adolescente."
+    : "Você é criança.";
 
     mensagem.textContent = `Cadastro concluído! Bem-vindo(a), ${nome}. ${classificacao}`;
     mensagem.className = "sucesso";
