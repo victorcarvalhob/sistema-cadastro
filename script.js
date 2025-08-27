@@ -1,57 +1,55 @@
-document.getElementById("cadastroForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+document.getElementById("cadastroForm").addEventListener("submit", function(submitEvent) {
+    submitEvent.preventDefault();
 
-    let nome = document.getElementById("nome").value.trim();
-    let idade = Number(document.getElementById("idade").value);
-    let senha = document.getElementById("senha").value;
-    let confirmarSenha = document.getElementById("confirmarSenha").value;
-    let mensagem = document.getElementById("mensagem");
+    const NOME = document.getElementById("nome").value.trim();
+    const IDADE = Number(document.getElementById("idade").value);
+    const SENHA = document.getElementById("senha").value;
+    const CONFIRMAR_SENHA = document.getElementById("confirmarSenha").value;
+    const TAMANHO_MINIMO_DA_SENHA = 4;
+    const MENOR_VALOR_DA_IDADE_VALIDA = 0
+    const MAIOR_VALOR_DA_IDADE_VALIDA = 120
+    const IDADE_ADULTA = 18;
+    const IDADE_DE_ADOLESCENTE = 13;
+    let mensagemDeConfirmacao = document.getElementById("mensagemDeConfirmação");
 
-    mensagem.textContent = "";
-    mensagem.className = "";
+    function exibirMensagem(texto, tipo = "") {
+      mensagemDeConfirmacao.textContent = texto;
+      mensagemDeConfirmacao.className = tipo;
+    }
 
     // Comparação de Strings
-    if (nome === "Admin") {
-        mensagem.textContent = "Erro: o nome 'Admin' não pode ser usado."
-        mensagem.className = "erro";
+    if (NOME === "Admin") {
+        exibirMensagem("Erro: o nome 'Admin' não pode ser usado.", "erro")
         return;
     }
 
     // Validações
-    if (nome === "" || senha === "" || confirmarSenha === "" || isNaN(idade)) {
-        mensagem.textContent = "Erro: Todos os campos são obrigatórios!";
-        mensagem.className = "erro";
+    if (NOME === "" || SENHA === "" || CONFIRMAR_SENHA === "") {
+        exibirMensagem("Erro: Todos os campos são obrigatórios!", "erro")
         return;
     }
 
-    if (senha.length < 4) {
-        mensagem.textContent = "Erro: A senha deve ter pelo menos 4 caracteres!";
-        mensagem.className = "erro";
+    if (SENHA.length < TAMANHO_MINIMO_DA_SENHA) {
+        exibirMensagem("Erro: A senha deve ter pelo menos 4 caracteres!", "erro")
         return;
     }
 
-    if (senha !== confirmarSenha) {
-        mensagem.textContent = "Erro: As senhas não conferem!";
-        mensagem.className =  "erro";
+    if (SENHA !== CONFIRMAR_SENHA) {
+        exibirMensagem("Erro: As senhas não conferem!", "erro")
         return;
     }
 
-    if (idade < 0) {
-        mensagem.textContent = "Erro: Idade inválida!";
-        mensagem.className = "erro";
+    if (IDADE < MENOR_VALOR_DA_IDADE_VALIDA || IDADE >= MAIOR_VALOR_DA_IDADE_VALIDA) {
+        exibirMensagem("Erro: Idade inválida!", "erro")
         return;
     }
-
-    // Uso de Booleano
-    let maiorDeIdade = idade >= 18;
 
     // Operador Ternário Para Classificação da Idade
-    let classificacao = maiorDeIdade
+    const CLASSIFICACAO_DA_IDADE = IDADE >= IDADE_ADULTA
     ? "Você é maior de idade."
-    : idade >= 13 
+    : IDADE >= IDADE_DE_ADOLESCENTE 
     ? "Você é adolescente."
     : "Você é criança.";
 
-    mensagem.textContent = `Cadastro concluído! Bem-vindo(a), ${nome}. ${classificacao}`;
-    mensagem.className = "sucesso";
+    exibirMensagem(`Cadastro concluído! Bem-vindo(a), ${NOME}. ${CLASSIFICACAO_DA_IDADE}`, "sucesso")
 });
