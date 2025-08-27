@@ -10,6 +10,8 @@ document.getElementById("cadastroForm").addEventListener("submit", function(subm
     const MAIOR_VALOR_DA_IDADE_VALIDA = 120
     const IDADE_ADULTA = 18;
     const IDADE_DE_ADOLESCENTE = 13;
+    let mensagemDeConfirmacao = document.getElementById("mensagemDeConfirmação");
+
 
     // Comparação de Strings
     if (nome === "Admin") {
