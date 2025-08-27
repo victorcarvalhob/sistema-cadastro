@@ -24,9 +24,8 @@ document.getElementById("cadastroForm").addEventListener("submit", function(subm
     }
 
     // Validações
-    if (nome === "" || senha === "" || confirmarSenha === "" || isNaN(idade)) {
-        mensagem.textContent = "Erro: Todos os campos são obrigatórios!";
-        mensagem.className = "erro";
+    if (NOME === "" || SENHA === "" || CONFIRMAR_SENHA === "") {
+        exibirMensagem("Erro: Todos os campos são obrigatórios!", "erro")
         return;
     }
 
