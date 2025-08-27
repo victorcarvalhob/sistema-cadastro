@@ -9,6 +9,11 @@ document.getElementById("cadastroForm").addEventListener("submit", function(e) {
 
     mensagem.textContent = "";
     mensagem.className = "";
+    const TAMANHO_MINIMO_DA_SENHA = 4;
+    const MENOR_VALOR_DA_IDADE_VALIDA = 0
+    const MAIOR_VALOR_DA_IDADE_VALIDA = 120
+    const IDADE_ADULTA = 18;
+    const IDADE_DE_ADOLESCENTE = 13;
 
     // Comparação de Strings
     if (nome === "Admin") {
@@ -24,7 +29,6 @@ document.getElementById("cadastroForm").addEventListener("submit", function(e) {
         return;
     }
 
-    if (senha.length < 4) {
         mensagem.textContent = "Erro: A senha deve ter pelo menos 4 caracteres!";
         mensagem.className = "erro";
         return;
@@ -36,19 +40,16 @@ document.getElementById("cadastroForm").addEventListener("submit", function(e) {
         return;
     }
 
-    if (idade < 0) {
         mensagem.textContent = "Erro: Idade inválida!";
         mensagem.className = "erro";
+    if (IDADE < MENOR_VALOR_DA_IDADE_VALIDA || IDADE >= MAIOR_VALOR_DA_IDADE_VALIDA) {
         return;
     }
 
-    // Uso de Booleano
-    let maiorDeIdade = idade >= 18;
-
     // Operador Ternário Para Classificação da Idade
-    let classificacao = maiorDeIdade
+    const CLASSIFICACAO_DA_IDADE = IDADE >= IDADE_ADULTA
     ? "Você é maior de idade."
-    : idade >= 13 
+    : IDADE >= IDADE_DE_ADOLESCENTE 
     ? "Você é adolescente."
     : "Você é criança.";
 
