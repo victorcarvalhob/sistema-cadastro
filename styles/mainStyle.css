@@ -95,7 +95,7 @@ button:hover {
     background: var(--botton-hover-color);
 }
 
-#mensagem {
+#mensagemDeConfirmação {
     margin-top: 16px;
     text-align: center;
     font-weight: bold;
