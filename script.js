@@ -12,11 +12,14 @@ document.getElementById("cadastroForm").addEventListener("submit", function(subm
     const IDADE_DE_ADOLESCENTE = 13;
     let mensagemDeConfirmacao = document.getElementById("mensagemDeConfirmação");
 
+    function exibirMensagem(texto, tipo = "") {
+      mensagemDeConfirmacao.textContent = texto;
+      mensagemDeConfirmacao.className = tipo;
+    }
 
     // Comparação de Strings
-    if (nome === "Admin") {
-        mensagem.textContent = "Erro: o nome 'Admin' não pode ser usado."
-        mensagem.className = "erro";
+    if (NOME === "Admin") {
+        exibirMensagem("Erro: o nome 'Admin' não pode ser usado.", "erro")
         return;
     }
 
@@ -27,20 +30,18 @@ document.getElementById("cadastroForm").addEventListener("submit", function(subm
         return;
     }
 
-        mensagem.textContent = "Erro: A senha deve ter pelo menos 4 caracteres!";
-        mensagem.className = "erro";
+    if (SENHA.length < TAMANHO_MINIMO_DA_SENHA) {
+        exibirMensagem("Erro: A senha deve ter pelo menos 4 caracteres!", "erro")
         return;
     }
 
-    if (senha !== confirmarSenha) {
-        mensagem.textContent = "Erro: As senhas não conferem!";
-        mensagem.className =  "erro";
+    if (SENHA !== CONFIRMAR_SENHA) {
+        exibirMensagem("Erro: As senhas não conferem!", "erro")
         return;
     }
 
-        mensagem.textContent = "Erro: Idade inválida!";
-        mensagem.className = "erro";
     if (IDADE < MENOR_VALOR_DA_IDADE_VALIDA || IDADE >= MAIOR_VALOR_DA_IDADE_VALIDA) {
+        exibirMensagem("Erro: Idade inválida!", "erro")
         return;
     }
 
@@ -51,6 +52,5 @@ document.getElementById("cadastroForm").addEventListener("submit", function(subm
     ? "Você é adolescente."
     : "Você é criança.";
 
-    mensagem.textContent = `Cadastro concluído! Bem-vindo(a), ${nome}. ${classificacao}`;
-    mensagem.className = "sucesso";
+    exibirMensagem(`Cadastro concluído! Bem-vindo(a), ${NOME}. ${CLASSIFICACAO_DA_IDADE}`, "sucesso")
 });
