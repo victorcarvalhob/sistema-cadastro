@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    input, button {
+        font-size: 15px;
+        padding: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 16px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 21px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
