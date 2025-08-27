@@ -1,5 +1,5 @@
-document.getElementById("cadastroForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+document.getElementById("cadastroForm").addEventListener("submit", function(submitEvent) {
+    submitEvent.preventDefault();
 
     let nome = document.getElementById("nome").value.trim();
     let idade = Number(document.getElementById("idade").value);
