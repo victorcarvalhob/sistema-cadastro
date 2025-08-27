@@ -8,12 +8,23 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #6A11CB, #2575FC);
-    color: #333;
+    background: linear-gradient(135deg, var(--secondary-color), var(--main-color));
+    color: var(--fields-name-color);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+:root {
+  --main-color: #2575FC;
+  --secondary-color: #6A11CB;
+  --botton-hover-color: #1B5EDC;
+  --box-shadow-focus-color: rgba(37, 117, 252, 0.5);
+  --title-color: #444;
+  --fields-border-color: #CCC;
+  --fields-name-color: #333;
+  --text-button-color: #FFF;
 }
 
 /* Layout */
@@ -36,7 +47,7 @@ body {
 h1 {
     text-align: center;
     margin-bottom: 24px;
-    color: #444;
+    color: var(--title-color);
 }
 
 .form-control {
@@ -52,15 +63,15 @@ label {
 input {
     width: 100%;
     padding: 11px;
-    border: 1px solid #CCC;
+    border: 1px solid var(--fields-border-color);
     border-radius: 8px;
     outline: none;
     transition: 0.3s;
 }
 
 input:focus {
-    border-color: #2575FC;
-    box-shadow: 0 0 5px rgba(37,117,252,0.5);
+    border-color: var(--main-color);
+    box-shadow: 0 0 5px var(--box-shadow-focus-color);
 }
 
 button {
@@ -68,15 +79,15 @@ button {
     padding: 14px;
     border: none;
     border-radius: 8px;
-    background: #2575FC;
-    color: #FFF;
+    background: var(--main-color);
+    color: var(--text-button-color);
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 button:hover {
-    background: #1B5EDC;
+    background: var(--botton-hover-color);
 }
 
 #mensagem {
