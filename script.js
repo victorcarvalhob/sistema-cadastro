@@ -1,14 +1,10 @@
 document.getElementById("cadastroForm").addEventListener("submit", function(submitEvent) {
     submitEvent.preventDefault();
 
-    let nome = document.getElementById("nome").value.trim();
-    let idade = Number(document.getElementById("idade").value);
-    let senha = document.getElementById("senha").value;
-    let confirmarSenha = document.getElementById("confirmarSenha").value;
-    let mensagem = document.getElementById("mensagem");
-
-    mensagem.textContent = "";
-    mensagem.className = "";
+    const NOME = document.getElementById("nome").value.trim();
+    const IDADE = Number(document.getElementById("idade").value);
+    const SENHA = document.getElementById("senha").value;
+    const CONFIRMAR_SENHA = document.getElementById("confirmarSenha").value;
     const TAMANHO_MINIMO_DA_SENHA = 4;
     const MENOR_VALOR_DA_IDADE_VALIDA = 0
     const MAIOR_VALOR_DA_IDADE_VALIDA = 120
